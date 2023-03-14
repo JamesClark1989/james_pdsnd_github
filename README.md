@@ -8,6 +8,7 @@ Bike share database project
 
 ### Description
 This project is made to test my pandas and numpy skills. It uses dataframes and references specific data.
+The programming language is Python.
 
 ### Files used
 bikeshare_2.py
