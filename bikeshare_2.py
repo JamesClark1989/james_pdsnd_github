@@ -66,9 +66,9 @@ def load_data(city, month, day):
     """
 
     # load data file into a dataframe
-    
+
     df = pd.read_csv('Final Project\\' + CITY_DATA[city.lower()])
-    
+
 
     df['Start Time'] = pd.to_datetime(df["Start Time"])
 
@@ -76,7 +76,7 @@ def load_data(city, month, day):
     df['day_of_week'] = df['Start Time'].dt.day_name()
 
     # filter by month if applicable
-    if month != 'all':    
+    if month != 'all':
         # filter by month to create the new dataframe
         df = df[df['month'] == month.title()]
 
@@ -108,7 +108,7 @@ def time_stats(df):
 
     # display the most common start hour
     common_hour = df['Start Time'].dt.hour
-    print(common_hour)
+    print(f"The most common hour is: {common_hour})
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -123,16 +123,16 @@ def station_stats(df):
 
     # display most commonly used start station
     common_start_station = df['Start Station'].mode()[0]
-    print(common_start_station)
+    print(f"The most common start station is: f{common_start_station}"")
 
     # display most commonly used end station
     common_end_station = df['End Station'].mode()[0]
-    print(common_end_station)
+    print(f"The most common end station is: {common_end_station}")
 
 
     # display most frequent combination of start station and end station trip
     common_both_station = (df['Start Station'] + df['End Station']).mode()[0]
-    print(common_both_station)
+    print(f"The 2 most common stations are: {common_both_station}"")
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -181,11 +181,11 @@ def user_stats(df):
     # Display earliest, most recent, and most common year of birth
     try:
         earliest_birth_year = df['Birth Year'].min()
-        print(earliest_birth_year)   
+        print(earliest_birth_year)
         most_recent_birth_year = df['Birth Year'].max()
-        print(most_recent_birth_year)   
+        print(most_recent_birth_year)
         most_common_birth_year = df['Birth Year'].mode()[0]
-        print(most_common_birth_year)   
+        print(most_common_birth_year)
     except:
         print("There is no 'Birth Year' column for that dataframe.")
 
